@@ -1,0 +1,23 @@
+
+<canvas width="600" height="400">
+
+</canvas>
+
+<script>
+
+var pantalla=document.querySelector('canvas');
+var pincel=pantalla.getContext("2d");
+
+pincel.fillStyle="gray";
+pincel.fillRect(0,0,600,400);
+
+
+function escribir_alertas(evento)
+{
+    console.log(evento);
+alert("Hizo click  cordenadas: x:    "+evento.clientX+"    y: "+evento.clientY);    
+}
+pantalla.onclick=escribir_alertas;
+
+
+</script>

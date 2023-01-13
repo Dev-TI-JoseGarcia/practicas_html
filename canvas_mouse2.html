@@ -1,0 +1,70 @@
+
+<canvas id="r" width="50" height="50" ></canvas>
+<canvas id="v" width="50" height="50" ></canvas>
+<canvas id="a" width="50" height="50" ></canvas>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+
+
+
+<script>
+var pantalla1=document.getElementById("r");
+var pincel1=pantalla1.getContext("2d");
+pincel1.fillStyle="red";
+pincel1.fillRect(0,0,50,50);
+
+var pantalla2=document.getElementById('v');var pincel2=pantalla2.getContext("2d");pincel2.fillStyle="green";pincel2.fillRect(0,0,50,50);
+var pantalla3=document.getElementById('a');var pincel3=pantalla3.getContext("2d");pincel3.fillStyle="blue";pincel3.fillRect(0,0,50,50);
+
+
+var pantalla=document.getElementById('canvas');
+var pincel=pantalla.getContext("2d");
+
+pincel.fillStyle="gray";
+pincel.fillRect(0,0,600,400);
+
+var puedo_dibujar=false;
+var pintura='black';
+
+
+function dibujarCirculo(evento)
+{
+    console.log("------s"+pintura);
+  pincel.fillStyle=pintura;
+  
+    if(puedo_dibujar)
+    {
+    var x=evento.pageX-pantalla.offsetLeft;
+    var y=evento.pageY-pantalla.offsetTop;
+    
+    pincel.beginPath();
+   pincel.arc(x,y,5,0,2*Math.PI);
+   pincel.fill();
+     
+   }
+
+}
+
+
+function habilitardibujo(){
+    puedo_dibujar=true;
+}
+
+function deshabilitardibujar()
+{
+    puedo_dibujar=false;
+}
+
+function red1(){    pintura="red"; }
+function verde1(){    pintura="green"; }
+function azul1(){    pintura="blue"; }
+
+pantalla.onmousedown=habilitardibujo;
+pantalla.onmouseup=deshabilitardibujar;
+pantalla.onmousemove=dibujarCirculo;
+pantalla1.onclick=red1;
+pantalla2.onclick=verde1;
+pantalla3.onclick=azul1;
+
+
+</script>

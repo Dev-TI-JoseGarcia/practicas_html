@@ -1,0 +1,56 @@
+
+<canvas width="600" height="400"></canvas>
+
+
+
+<script>
+
+var pantalla=document.querySelector('canvas');
+var pincel=pantalla.getContext("2d");
+
+pincel.fillStyle="gray";
+pincel.fillRect(0,0,600,400);
+
+var radio=10;
+function designcircunferencia(x,y,radio,color)
+{
+   
+pincel.fillStyle=color;
+pincel.beginPath();
+pincel.arc(x,y,radio,0,2*Math.PI);
+pincel.fill();
+     
+}
+
+function limpiarpantalla()
+{
+pincel.clearRect(0,0,600,400);
+}
+
+
+
+function designobjetivo(x,y)
+{
+designcircunferencia(x,y,radio+20,"red");
+designcircunferencia(x,y,radio+10,"white");
+designcircunferencia(x,y,radio,"red");
+}
+//setInterval(actualizarpantalla,2);
+
+
+function sortear(maximo)
+{
+    return Math.floor(Math.random()*maximo);
+}
+
+
+
+
+
+var xaletorio=sortear(600);
+var yaleatorio=sortear(400);
+
+designobjetivo(xaletorio,yaleatorio);
+
+
+</script>
